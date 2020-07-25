@@ -1,4 +1,4 @@
-module polyfuse
+module github.com/jinagamvasubabu/polyfuse
 
 go 1.13
 
