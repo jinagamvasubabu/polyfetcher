@@ -37,7 +37,7 @@ import (
 
 //IGeometryUtils Program to fetch the polygon data of one or more areas
 type IGeometryUtils interface {
-	CombinePolygons(ctx context.Context, areas []string) (schema.GeoJson, error)
+	CombinePolygons(ctx context.Context, areas []string) (string, error)
 }
 
 //GeometryUtils struct to configure GeometryUtils
@@ -46,7 +46,7 @@ type GeometryUtils struct {
 }
 
 //CombinePolygons function to combine polygons or multipolygons
-func (g *GeometryUtils) CombinePolygons(ctx context.Context, areas []string) (schema.GeoJson, error) {
+func (g *GeometryUtils) CombinePolygons(ctx context.Context, areas []string) (string, error) {
 	log.SetLevel(g.LogLevel)
 	defer calculateTimeTaken(time.Now(), "Time Taken by Fetch Polygons")
 	logger := log.WithContext(ctx).WithFields(log.Fields{"Method": "CombinePolygons"})
@@ -57,7 +57,7 @@ func (g *GeometryUtils) CombinePolygons(ctx context.Context, areas []string) (sc
 	respList, err := getPolygonDataFromOSM(ctx, areas)
 	if err != nil {
 		logger.WithFields(log.Fields{"err": err.Error()}).Error("error while fetching the polygon")
-		return schema.GeoJson{}, err
+		return "", err
 	}
 	for i, result := range respList {
 		geoJSON := result["geojson"].(map[string]interface{})
@@ -84,7 +84,12 @@ func (g *GeometryUtils) CombinePolygons(ctx context.Context, areas []string) (sc
 	}
 	removeNilsFromArray(&response)
 	logger.Debugf("GoRoutines count at last:%d", runtime.NumGoroutine())
-	return response, nil
+	byteArr, err := json.Marshal(response)
+	if err != nil {
+		logger.WithFields(log.Fields{"err": err.Error()}).Errorf("Failed while marshalling the response", runtime.NumGoroutine())
+		return "", err
+	}
+	return string(byteArr), nil
 }
 
 func getPolygonDataFromOSM(ctx context.Context, areas []string) ([]map[string]interface{}, error) {
