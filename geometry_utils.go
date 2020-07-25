@@ -86,7 +86,7 @@ func (g *GeometryUtils) CombinePolygons(ctx context.Context, areas []string) (st
 	logger.Debugf("GoRoutines count at last:%d", runtime.NumGoroutine())
 	byteArr, err := json.Marshal(response)
 	if err != nil {
-		logger.WithFields(log.Fields{"err": err.Error()}).Errorf("Failed while marshalling the response", runtime.NumGoroutine())
+		logger.WithFields(log.Fields{"err": err.Error()}).Error("Failed while marshalling the response")
 		return "", err
 	}
 	return string(byteArr), nil
