@@ -5,10 +5,10 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
+	"github.com/jinagamvasubabu/polyfuse/schema"
 	log "github.com/sirupsen/logrus"
 	"io/ioutil"
 	"net/http"
-	"polyfuse/schema"
 	"runtime"
 	"time"
 )
