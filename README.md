@@ -1,6 +1,11 @@
 # polyfuse : A Go Package to  combine two or more polygons into a single Polygon/MultiPolygon
-
-## Overview [![GoDoc](https://godoc.org/github.com/jinagamvasubabu/polyfuse?status.svg)](https://godoc.org/github.com/jinagamvasubabu/polyfuse) [![Build Status](https://travis-ci.org/jinagamvasubabu/polyfuse.svg?branch=master)](https://travis-ci.org/jinagamvasubabu/polyfuse) [![Go Report Card](https://goreportcard.com/badge/github.com/jinagamvasubabu/polyfuse)](https://goreportcard.com/report/github.com/jinagamvasubabu/polyfuse)
+![alt text](https://github.com/jinagamvasubabu/polyfuse/blob/master/images/polyfuse_brand.png?raw=true)
+## Overview 
+[![Build Status](https://travis-ci.org/jinagamvasubabu/polyfuse.svg?branch=master)](https://travis-ci.org/jinagamvasubabu/polyfuse)
+[![Build Status](https://circleci.com/gh/jinagamvasubabu/polyfuse.svg?style=svg)](https://circleci.com/gh/jinagamvasubabu/polyfuse)
+[![Go Report Card](https://goreportcard.com/badge/github.com/jinagamvasubabu/polyfuse)](https://goreportcard.com/report/github.com/jinagamvasubabu/polyfuse)
+[![GoDoc](https://godoc.org/github.com/jinagamvasubabu/polyfuse?status.svg)](https://godoc.org/github.com/jinagamvasubabu/polyfuse) 
+[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
 Program to fetch the polygon data of one or more areas
 Not only that, using this you can combine two or more polygons/multipolygon to a Multi polygon
