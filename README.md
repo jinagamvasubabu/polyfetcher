@@ -1,5 +1,5 @@
 # Polyfuse
-Util to combine one or more polygons into one
+A Go Package can fetch polygon definitions from OpenStreet maps and it can also combine one or more polygons into one.
 ![alt text](https://github.com/jinagamvasubabu/polyfuse/blob/master/images/polyfuse.png?raw=true)
 ## Overview 
 [![Build Status](https://travis-ci.org/jinagamvasubabu/polyfuse.svg?branch=master)](https://travis-ci.org/jinagamvasubabu/polyfuse)
@@ -9,7 +9,8 @@ Util to combine one or more polygons into one
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
 ## What it does?
-`Polyfuse` can fetch Polygon definitions from `OpenstreetMaps` and able to convert into one single Polygon or Multipolygon
+* It can fetch Polygon definitions from `OpenstreetMaps` 
+* Combine one or more polygons into one single Polygon or Multipolygon
 
 ## How to use ?
 * get `polyfuse`
@@ -18,26 +19,40 @@ Util to combine one or more polygons into one
   ```
 * import and use it like below:
 ```
-  import 
+  import "github.com/jinagamvasubabu/polyfuse"
+  import "github.com/sirupsen/logrus"
+ 
+  p := polyfuse.GeometryUtils{}
+  resp, err := p.CombinePolygons(context.Background(), []string{"germany", "belgium"})
+
 ```
-Program to fetch the polygon data of one or more areas
-Not only that, using this you can combine two or more polygons/multipolygon to a Multi polygon
 
-returns polygon if both areas are polygons
-  returns Multipolygon if both areas are multi polygons
+## How to enable Debug logs?
+```
+  import "github.com/jinagamvasubabu/polyfuse"
 
-  validate the response using geojsonlint.com or geojson.io. Paste it directly in the textbox to validate it
+ 
+  p := polyfuse.GeometryUtils{LogLevel:logrus.DebugLevel}
+  resp, err := p.CombinePolygons(context.Background(), []string{"germany", "belgium"})
 
- Note: If you get an error like Polygons and MultiPolygons should follow the right-hand rule then follow this below article to fix it.
+```
 
-  https://dev.to/jinagamvasubabu/solution-polygons-and-multipolygons-should-follow-the-right-hand-rule-2c8i
+## How to validate the data ?
+Response type is schema.GeoJson, you can marshal the resonse to string and use [geojsonlint](https://geojsonlint.com) to validate the geojson.
+![alt text](https://github.com/jinagamvasubabu/polyfuse/blob/master/images/geojsonlint.png?raw=true)
 
- Errors:
+```
+    Note: If you get an error like Polygons and MultiPolygons should follow the right-hand rule then follow this below article to fix it.
+    https://dev.to/jinagamvasubabu/solution-polygons-and-multipolygons-should-follow-the-right-hand-rule-2c8i
+```
+
+## Known Errors: 
+Errors:
    * If one of the area is invalid area then it can fetch the other area if its valid
-     * If both are invalid then it will fail using
+   * If both are invalid then it will throw error
 
- GoRoutines Support:
-     * Instead of getting each and every polygon data synchronously, Time metrics has been logged at the end of the program
+## Goroutines Support:
+Goroutines support to fetch concurrently instead of synchronously
 
 
 ## Install
