@@ -42,12 +42,12 @@ type IGeometryUtils interface {
 
 //GeometryUtils struct to configure GeometryUtils
 type GeometryUtils struct {
-	logLevel log.Level
+	LogLevel log.Level
 }
 
 //CombinePolygons function to combine polygons or multipolygons
 func (g *GeometryUtils) CombinePolygons(ctx context.Context, areas []string) (schema.GeoJson, error) {
-	log.SetLevel(g.logLevel)
+	log.SetLevel(g.LogLevel)
 	defer calculateTimeTaken(time.Now(), "Time Taken by Fetch Polygons")
 	logger := log.WithContext(ctx).WithFields(log.Fields{"Method": "CombinePolygons"})
 	logger.Infof("Combine polygons for=%s", areas)

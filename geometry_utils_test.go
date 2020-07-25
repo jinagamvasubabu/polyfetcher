@@ -9,7 +9,7 @@ import (
 
 func TestGeometryUtils_CombinePolygons_Success(t *testing.T) {
 	//Given
-	gm := GeometryUtils{logLevel: logrus.DebugLevel}
+	gm := GeometryUtils{LogLevel: logrus.DebugLevel}
 	areas := []string{"frankfurt", "munich"}
 
 	//When
@@ -22,7 +22,7 @@ func TestGeometryUtils_CombinePolygons_Success(t *testing.T) {
 
 func TestGeometryUtils_CombinePolygons_areas_one_is_Invalid(t *testing.T) {
 	//Given
-	gm := GeometryUtils{logLevel: logrus.DebugLevel}
+	gm := GeometryUtils{LogLevel: logrus.DebugLevel}
 	areas := []string{"asdasdasdasdasdasdas", "munich"}
 
 	//When
@@ -35,7 +35,7 @@ func TestGeometryUtils_CombinePolygons_areas_one_is_Invalid(t *testing.T) {
 
 func TestGeometryUtils_CombinePolygons_failure(t *testing.T) {
 	//Given
-	gm := GeometryUtils{logLevel: logrus.DebugLevel}
+	gm := GeometryUtils{LogLevel: logrus.DebugLevel}
 	areas := []string{"asdasdasdasdasdasdas", "asdasdasdasdasd"}
 
 	//When
@@ -47,7 +47,7 @@ func TestGeometryUtils_CombinePolygons_failure(t *testing.T) {
 
 func TestGeometryUtils_CombinePolygons_geometry_type_MultiPolygon(t *testing.T) {
 	//Given
-	gm := GeometryUtils{logLevel: logrus.DebugLevel}
+	gm := GeometryUtils{LogLevel: logrus.DebugLevel}
 	areas := []string{"frankfurt", "munich"}
 
 	//When
