@@ -14,26 +14,28 @@ import (
 )
 
 /**
-  Program to fetch the polygon data of one or more areas
-  Not only that, using this you can combine two or more polygons/multipolygon to a Multi polygon
-
-  returns polygon if both areas are polygons
-  returns MultiPolygon if both areas are multi polygons
-
-  validate the response using geojsonlint.com or geojson.io. Paste it directly in the textbox to validate it
-
-  Note: If you get an error like Polygons and MultiPolygons should follow the right-hand rule then follow this below article to fix it.
-
-  https://dev.to/jinagamvasubabu/solution-polygons-and-multipolygons-should-follow-the-right-hand-rule-2c8i
-
-  Errors:
-     * If one of the area is invalid area then it can fetch the other area if its valid
-     * If both are invalid then it will fail using
-
-  GoRoutines Support:
-     * Instead of getting each and every polygon data synchronously, Time metrics has been logged at the end of the program
-
+// Program to fetch the polygon data of one or more areas
+//  Not only that, using this you can combine two or more polygons/multipolygon to a Multi polygon
+//
+//  returns polygon if both areas are polygons
+//  returns Multipolygon if both areas are multi polygons
+//
+//  validate the response using geojsonlint.com or geojson.io. Paste it directly in the textbox to validate it
+//
+//  Note: If you get an error like Polygons and MultiPolygons should follow the right-hand rule then follow this below article to fix it.
+//
+//  https://dev.to/jinagamvasubabu/solution-polygons-and-multipolygons-should-follow-the-right-hand-rule-2c8i
+//
+//  Errors:
+//     * If one of the area is invalid area then it can fetch the other area if its valid
+//     * If both are invalid then it will fail using
+//
+//  GoRoutines Support:
+//     * Instead of getting each and every polygon data synchronously, Time metrics has been logged at the end of the program
+//
 */
+
+//GeometryUtils Program to fetch the polygon data of one or more areas
 type GeometryUtils interface {
 	CombinePolygons(ctx context.Context, areas []string) (schema.GeoJson, error)
 }
@@ -56,19 +58,19 @@ func (g *geometryUtils) CombinePolygons(ctx context.Context, areas []string) (sc
 		return schema.GeoJson{}, err
 	}
 	for i, result := range respList {
-		geoJson := result["geojson"].(map[string]interface{})
-		coordinates := geoJson["coordinates"].([]interface{})
-		response.Type = geoJson["type"].(string)
+		geoJSON := result["geojson"].(map[string]interface{})
+		coordinates := geoJSON["coordinates"].([]interface{})
+		response.Type = geoJSON["type"].(string)
 		//append based on the type of geojson
 		if len(areas) == 1 {
 			response.Coordinates = coordinates
 		} else if i == 0 && response.Type == Polygon {
 			response.Coordinates[0] = coordinates
 		} else if i > 0 && response.Type == Polygon {
-			count := LenOfCoOrdinatesArray(response.Coordinates)
+			count := lenOfCoOrdinatesArray(response.Coordinates)
 			response.Coordinates[count] = coordinates
-		} else if response.Type == MultiPolygon {
-			count := LenOfCoOrdinatesArray(response.Coordinates)
+		} else if response.Type == Multipolygon {
+			count := lenOfCoOrdinatesArray(response.Coordinates)
 			for j := range coordinates {
 				response.Coordinates[count] = coordinates[j]
 				count++
@@ -76,7 +78,7 @@ func (g *geometryUtils) CombinePolygons(ctx context.Context, areas []string) (sc
 		}
 	}
 	if len(areas) > 1 {
-		response.Type = MultiPolygon
+		response.Type = Multipolygon
 	}
 	removeNilsFromArray(&response)
 	logger.Debugf("GoRoutines count at last:%d", runtime.NumGoroutine())
@@ -111,10 +113,9 @@ func getPolygonDataFromOSM(ctx context.Context, areas []string) ([]map[string]in
 }
 
 func fetchOSMDataFromExternalClient(area string, c chan schema.OSMStatus) {
-	resp, err := http.Get(fmt.Sprintf(OSM_URL, area))
+	resp, err := http.Get(fmt.Sprintf(OsmURL, area))
 	if err != nil {
 		c <- schema.OSMStatus{Error: errors.New("error while fetching the polygon from OSM")}
-		return
 	} else {
 		defer resp.Body.Close()
 	}
@@ -139,7 +140,7 @@ func fetchOSMDataFromExternalClient(area string, c chan schema.OSMStatus) {
 
 }
 
-func LenOfCoOrdinatesArray(coOrdinates []interface{}) int32 {
+func lenOfCoOrdinatesArray(coOrdinates []interface{}) int32 {
 	var coOrdinatesLen int32
 	for _, v := range coOrdinates {
 		if v == nil {
