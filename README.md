@@ -1,4 +1,5 @@
-# polyfuse : A Go Package to  combine two or more polygons into a single Polygon/MultiPolygon
+# Polyfuse
+Util to combine one or more polygons into one
 ![alt text](https://github.com/jinagamvasubabu/polyfuse/blob/master/images/polyfuse.png?raw=true)
 ## Overview 
 [![Build Status](https://travis-ci.org/jinagamvasubabu/polyfuse.svg?branch=master)](https://travis-ci.org/jinagamvasubabu/polyfuse)
@@ -7,6 +8,18 @@
 [![GoDoc](https://godoc.org/github.com/jinagamvasubabu/polyfuse?status.svg)](https://godoc.org/github.com/jinagamvasubabu/polyfuse) 
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
+## What it does?
+`Polyfuse` can fetch Polygon definitions from `OpenstreetMaps` and able to convert into one single Polygon or Multipolygon
+
+## How to use ?
+* get `polyfuse`
+```
+  go get github.com/jinagamvasubabu/polyfuse
+  ```
+* import and use it like below:
+```
+  import 
+```
 Program to fetch the polygon data of one or more areas
 Not only that, using this you can combine two or more polygons/multipolygon to a Multi polygon
 

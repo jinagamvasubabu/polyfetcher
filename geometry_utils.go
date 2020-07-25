@@ -35,16 +35,18 @@ import (
 //
 */
 
-//GeometryUtils Program to fetch the polygon data of one or more areas
-type GeometryUtils interface {
+//IGeometryUtils Program to fetch the polygon data of one or more areas
+type IGeometryUtils interface {
 	CombinePolygons(ctx context.Context, areas []string) (schema.GeoJson, error)
 }
 
-type geometryUtils struct {
+//GeometryUtils struct to configure GeometryUtils
+type GeometryUtils struct {
 	logLevel log.Level
 }
 
-func (g *geometryUtils) CombinePolygons(ctx context.Context, areas []string) (schema.GeoJson, error) {
+//CombinePolygons function to combine polygons or multipolygons
+func (g *GeometryUtils) CombinePolygons(ctx context.Context, areas []string) (schema.GeoJson, error) {
 	log.SetLevel(g.logLevel)
 	defer calculateTimeTaken(time.Now(), "Time Taken by Fetch Polygons")
 	logger := log.WithContext(ctx).WithFields(log.Fields{"Method": "CombinePolygons"})
