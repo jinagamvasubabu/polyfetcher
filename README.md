@@ -9,7 +9,7 @@ A Go Package can fetch polygon definitions from OpenStreet maps and it can also 
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
 ## What it does?
-* It can fetch Polygon definitions from `OpenstreetMaps` 
+* It can fetch Polygon definitions from `OpenstreetMaps` by taking an area name, throw error if the area is in OSM database
 * Combine one or more polygons into one single Polygon or Multipolygon
 
 ## How to use ?
@@ -41,10 +41,10 @@ A Go Package can fetch polygon definitions from OpenStreet maps and it can also 
 Response type is schema.GeoJson, you can marshal the resonse to string and use [geojsonlint](https://geojsonlint.com) to validate the geojson.
 ![alt text](https://github.com/jinagamvasubabu/polyfuse/blob/master/images/geojsonlint.png?raw=true)
 
-```
-    Note: If you get an error like Polygons and MultiPolygons should follow the right-hand rule then follow this below article to fix it.
-    https://dev.to/jinagamvasubabu/solution-polygons-and-multipolygons-should-follow-the-right-hand-rule-2c8i
-```
+Note: 
+If you get an error like Polygons and MultiPolygons should follow the right-hand rule then follow this below article to fix it.
+[https://dev.to/jinagamvasubabu/solution-polygons-and-multipolygons-should-follow-the-right-hand-rule-2c8i](https://dev.to/jinagamvasubabu/solution-polygons-and-multipolygons-should-follow-the-right-hand-rule-2c8i)
+
 
 ## Known Errors: 
 Errors:
@@ -52,7 +52,7 @@ Errors:
    * If both are invalid then it will throw error
 
 ## Goroutines Support:
-Goroutines support to fetch concurrently instead of synchronously
+Goroutines support to fetch areas concurrently instead of synchronously
 
 
 ## Install
