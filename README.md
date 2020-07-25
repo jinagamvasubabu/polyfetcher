@@ -1,5 +1,5 @@
 # polyfuse : A Go Package to  combine two or more polygons into a single Polygon/MultiPolygon
-![alt text](https://github.com/jinagamvasubabu/polyfuse/blob/master/images/polyfuse_brand.png?raw=true)
+![alt text](https://github.com/jinagamvasubabu/polyfuse/blob/master/images/polyfuse.png?raw=true)
 ## Overview 
 [![Build Status](https://travis-ci.org/jinagamvasubabu/polyfuse.svg?branch=master)](https://travis-ci.org/jinagamvasubabu/polyfuse)
 [![Build Status](https://circleci.com/gh/jinagamvasubabu/polyfuse.svg?style=svg)](https://circleci.com/gh/jinagamvasubabu/polyfuse)
