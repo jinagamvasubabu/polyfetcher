@@ -37,6 +37,7 @@ go get github.com/jinagamvasubabu/polyfuse
 ```
 
 ## How to enable Debug logs?
+Pass logrus `LogLevel:logrus.DebugLevel` to `GeometryUtils` struct
 ```
   import "github.com/jinagamvasubabu/polyfuse"
 
