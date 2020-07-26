@@ -8,9 +8,18 @@ A Go Package can fetch polygon definitions from OpenStreet maps and it can also 
 [![GoDoc](https://godoc.org/github.com/jinagamvasubabu/polyfuse?status.svg)](https://godoc.org/github.com/jinagamvasubabu/polyfuse) 
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
+## Documentation ?
+More you can find here: [https://hangoutdude.com/polyfuse/](https://hangoutdude.com/polyfuse/)
+
 ## What it does?
-* It can fetch Polygon definitions from `OpenstreetMaps` by taking an area name, throw error if the area is in OSM database
+* It can fetch Polygon definitions from `OpenstreetMaps` by taking an area name, throw error if the area is not in OSM database
 * Combine one or more polygons into one single Polygon or Multipolygon
+
+## Install
+
+```
+go get github.com/jinagamvasubabu/polyfuse
+```
 
 ## How to use ?
 * get `polyfuse`
@@ -53,13 +62,6 @@ Errors:
 
 ## Goroutines Support:
 Goroutines support to fetch areas concurrently instead of synchronously
-
-
-## Install
-
-```
-go get github.com/jinagamvasubabu/polyfuse
-```
 
 ## Author
 
