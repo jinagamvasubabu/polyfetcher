@@ -25,7 +25,7 @@ go get github.com/jinagamvasubabu/polyfuse
 * get `polyfuse`
 ```
   go get github.com/jinagamvasubabu/polyfuse
-  ```
+```
 * import and use it like below:
 ```
   import "github.com/jinagamvasubabu/polyfuse"
@@ -33,18 +33,17 @@ go get github.com/jinagamvasubabu/polyfuse
  
   p := polyfuse.GeometryUtils{}
   resp, err := p.CombinePolygons(context.Background(), []string{"germany", "belgium"})
-
 ```
 
 ## How to enable Debug logs?
-Pass logrus `LogLevel:logrus.DebugLevel` to `GeometryUtils` struct
+
+* Pass logrus `LogLevel:logrus.DebugLevel` to `GeometryUtils` struct
 ```
   import "github.com/jinagamvasubabu/polyfuse"
 
  
   p := polyfuse.GeometryUtils{LogLevel:logrus.DebugLevel}
   resp, err := p.CombinePolygons(context.Background(), []string{"germany", "belgium"})
-
 ```
 
 ## How to validate the data ?
