@@ -8,6 +8,7 @@ A Go Package can fetch polygon definitions from OpenStreet maps and it can also 
 [![GoDoc](https://godoc.org/github.com/jinagamvasubabu/polyfuse?status.svg)](https://godoc.org/github.com/jinagamvasubabu/polyfuse) 
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 [![HitCount](http://hits.dwyl.com/jinagamvasubabu/githubcom/jinagamvasubabu/polyfuse.svg)](http://hits.dwyl.com/jinagamvasubabu/githubcom/jinagamvasubabu/polyfuse)
+[![Maintainability](https://api.codeclimate.com/v1/badges/bc775ba7e9b6231175a2/maintainability)](https://codeclimate.com/github/jinagamvasubabu/polyfuse/maintainability)
 
 ## Documentation ?
 More you can find here: [https://hangoutdude.com/polyfuse/](https://hangoutdude.com/polyfuse/)
