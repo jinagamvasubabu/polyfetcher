@@ -7,7 +7,7 @@ A Go Package can fetch polygon definitions from OpenStreet maps and it can also 
 [![Go Report Card](https://goreportcard.com/badge/github.com/jinagamvasubabu/polyfetcher)](https://goreportcard.com/report/github.com/jinagamvasubabu/polyfetcher)
 [![GoDoc](https://godoc.org/github.com/jinagamvasubabu/polyfetcher?status.svg)](https://godoc.org/github.com/jinagamvasubabu/polyfetcher) 
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
-[![HitCount](http://hits.dwyl.com/jinagamvasubabu/githubcom/jinagamvasubabu/polyfetcher.svg)](http://hits.dwyl.com/jinagamvasubabu/githubcom/jinagamvasubabu/polyfetcher)
+![visitors](https://visitor-badge.glitch.me/badge?page_id=jinagamvasubabu.polyfetcher)
 [![Maintainability](https://api.codeclimate.com/v1/badges/bc775ba7e9b6231175a2/maintainability)](https://codeclimate.com/github/jinagamvasubabu/polyfetcher/maintainability)
 
 ## Documentation ?
