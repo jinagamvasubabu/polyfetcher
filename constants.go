@@ -1,4 +1,4 @@
-package poly_fetcher
+package polyFetcher
 
 const (
 	//CoordinatesMaxLength Maximum length of the coordinates array

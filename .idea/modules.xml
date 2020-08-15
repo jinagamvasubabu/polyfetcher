@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/../poly_fetcher/.idea/poly_fetcher.iml" filepath="$PROJECT_DIR$/../poly_fetcher/.idea/poly_fetcher.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../polyFetcher/.idea/polyFetcher.iml" filepath="$PROJECT_DIR$/../polyFetcher/.idea/polyFetcher.iml" />
     </modules>
   </component>
 </project>

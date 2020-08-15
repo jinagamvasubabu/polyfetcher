@@ -1,11 +1,11 @@
-package poly_fetcher
+package polyFetcher
 
 import (
 	"context"
 	"encoding/json"
 	"errors"
 	"fmt"
-	"github.com/jinagamvasubabu/poly_fetcher/schema"
+	"github.com/jinagamvasubabu/polyFetcher/schema"
 	log "github.com/sirupsen/logrus"
 	"io/ioutil"
 	"net/http"

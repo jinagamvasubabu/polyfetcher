@@ -1,4 +1,4 @@
-package poly_fetcher
+package polyFetcher
 
 import (
 	"context"

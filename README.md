@@ -1,18 +1,18 @@
-poly_fetcher
+polyFetcher
 --
 A Go Package can fetch polygon definitions from OpenStreet maps and it can also combine one or more polygons into one.
-![alt text](https://github.com/jinagamvasubabu/poly_fetcher/blob/master/images/poly_fetcher.jpg?raw=true)
+![alt text](https://github.com/jinagamvasubabu/polyFetcher/blob/master/images/polyFetcher.jpg?raw=true)
 ## Overview 
-[![Build Status](https://travis-ci.org/jinagamvasubabu/poly_fetcher.svg?branch=master)](https://travis-ci.org/jinagamvasubabu/poly_fetcher)
-[![Build Status](https://circleci.com/gh/jinagamvasubabu/poly_fetcher.svg?style=svg)](https://circleci.com/gh/jinagamvasubabu/poly_fetcher)
-[![Go Report Card](https://goreportcard.com/badge/github.com/jinagamvasubabu/poly_fetcher)](https://goreportcard.com/report/github.com/jinagamvasubabu/poly_fetcher)
-[![GoDoc](https://godoc.org/github.com/jinagamvasubabu/poly_fetcher?status.svg)](https://godoc.org/github.com/jinagamvasubabu/poly_fetcher) 
+[![Build Status](https://travis-ci.org/jinagamvasubabu/polyFetcher.svg?branch=master)](https://travis-ci.org/jinagamvasubabu/polyFetcher)
+[![Build Status](https://circleci.com/gh/jinagamvasubabu/polyFetcher.svg?style=svg)](https://circleci.com/gh/jinagamvasubabu/polyFetcher)
+[![Go Report Card](https://goreportcard.com/badge/github.com/jinagamvasubabu/polyFetcher)](https://goreportcard.com/report/github.com/jinagamvasubabu/polyFetcher)
+[![GoDoc](https://godoc.org/github.com/jinagamvasubabu/polyFetcher?status.svg)](https://godoc.org/github.com/jinagamvasubabu/polyFetcher) 
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
-[![HitCount](http://hits.dwyl.com/jinagamvasubabu/githubcom/jinagamvasubabu/poly_fetcher.svg)](http://hits.dwyl.com/jinagamvasubabu/githubcom/jinagamvasubabu/poly_fetcher)
-[![Maintainability](https://api.codeclimate.com/v1/badges/bc775ba7e9b6231175a2/maintainability)](https://codeclimate.com/github/jinagamvasubabu/poly_fetcher/maintainability)
+[![HitCount](http://hits.dwyl.com/jinagamvasubabu/githubcom/jinagamvasubabu/polyFetcher.svg)](http://hits.dwyl.com/jinagamvasubabu/githubcom/jinagamvasubabu/polyFetcher)
+[![Maintainability](https://api.codeclimate.com/v1/badges/bc775ba7e9b6231175a2/maintainability)](https://codeclimate.com/github/jinagamvasubabu/polyFetcher/maintainability)
 
 ## Documentation ?
-More you can find here: [https://hangoutdude.com/poly_fetcher/](https://hangoutdude.com/poly_fetcher/)
+More you can find here: [https://hangoutdude.com/polyFetcher/](https://hangoutdude.com/polyFetcher/)
 
 ## What it does?
 * It can fetch Polygon definitions from `OpenstreetMaps` by taking an area name, throw error if the area is not in OSM database
@@ -21,35 +21,35 @@ More you can find here: [https://hangoutdude.com/poly_fetcher/](https://hangoutd
 ## Install
 
 ```
-go get github.com/jinagamvasubabu/poly_fetcher
+go get github.com/jinagamvasubabu/polyFetcher
 ```
 
 
 ## How to use Fetch Polygons?
-* get `poly_fetcher`
+* get `polyFetcher`
 ```
-  go get github.com/jinagamvasubabu/poly_fetcher
+  go get github.com/jinagamvasubabu/polyFetcher
 ```
 * import and use it like below:
 ```
-  import "github.com/jinagamvasubabu/poly_fetcher"
+  import "github.com/jinagamvasubabu/polyFetcher"
   import "github.com/sirupsen/logrus"
  
-  p := poly_fetcher.GeometryUtils{}
+  p := polyFetcher.GeometryUtils{}
   resp, err := p.FetchPolygons(context.Background(), []string{"germany", "belgium"})
 ```
 
 ## How to use Combine Polygons?
-* get `poly_fetcher`
+* get `polyFetcher`
 ```
-  go get github.com/jinagamvasubabu/poly_fetcher
+  go get github.com/jinagamvasubabu/polyFetcher
 ```
 * import and use it like below:
 ```
-  import "github.com/jinagamvasubabu/poly_fetcher"
+  import "github.com/jinagamvasubabu/polyFetcher"
   import "github.com/sirupsen/logrus"
  
-  p := poly_fetcher.GeometryUtils{}
+  p := polyFetcher.GeometryUtils{}
   resp, err := p.CombinePolygons(context.Background(), []string{"germany", "belgium"})
 ```
 
@@ -57,16 +57,16 @@ go get github.com/jinagamvasubabu/poly_fetcher
 
 * Pass logrus `LogLevel:logrus.DebugLevel` to `GeometryUtils` struct
 ```
-  import "github.com/jinagamvasubabu/poly_fetcher"
+  import "github.com/jinagamvasubabu/polyFetcher"
 
  
-  p := poly_fetcher.GeometryUtils{LogLevel:logrus.DebugLevel}
+  p := polyFetcher.GeometryUtils{LogLevel:logrus.DebugLevel}
   resp, err := p.CombinePolygons(context.Background(), []string{"germany", "belgium"})
 ```
 
 ## How to validate the data ?
 Response type is schema.GeoJson, you can marshal the resonse to string and use [geojsonlint](https://geojsonlint.com) to validate the geojson.
-![alt text](https://github.com/jinagamvasubabu/poly_fetcher/blob/master/images/geojsonlint.png?raw=true)
+![alt text](https://github.com/jinagamvasubabu/polyFetcher/blob/master/images/geojsonlint.png?raw=true)
 
 Note: 
 If you get an error like Polygons and MultiPolygons should follow the right-hand rule then follow this below article to fix it.
