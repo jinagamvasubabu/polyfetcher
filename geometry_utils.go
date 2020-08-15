@@ -5,7 +5,7 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
-	"github.com/jinagamvasubabu/polyfuse/schema"
+	"github.com/jinagamvasubabu/poly_fetcher/schema"
 	log "github.com/sirupsen/logrus"
 	"io/ioutil"
 	"net/http"
