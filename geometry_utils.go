@@ -46,7 +46,7 @@ type GeometryUtils struct {
 	LogLevel log.Level
 }
 
-//FetchPolygon  FetchPolygon gets the definitions from OSM
+//FetchPolygon function gets the definitions from OSM
 func (g *GeometryUtils) FetchPolygons(ctx context.Context, areas []string) ([]schema.GeoJson, error) {
 	log.SetLevel(g.LogLevel)
 	defer calculateTimeTaken(time.Now(), "Time Taken by Fetch Polygons")
