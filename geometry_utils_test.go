@@ -22,7 +22,6 @@ func TestGeometryUtils_FetchPolygons_success(t *testing.T) {
 	assert.NotNil(t, response)
 }
 
-
 func TestGeometryUtils_FetchPolygons_one_area_is_invalid(t *testing.T) {
 	//Given
 	gm := GeometryUtils{LogLevel: logrus.DebugLevel}

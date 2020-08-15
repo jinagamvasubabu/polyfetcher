@@ -88,7 +88,6 @@ func (g *GeometryUtils) FetchPolygons(ctx context.Context, areas []string) ([]sc
 	return response, nil
 }
 
-
 //CombinePolygons function to combine polygons or multipolygons
 func (g *GeometryUtils) CombinePolygons(ctx context.Context, areas []string) (schema.GeoJson, error) {
 	log.SetLevel(g.LogLevel)
