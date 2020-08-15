@@ -1,6 +1,6 @@
-# Polyfuse
+# poly_fetcher
 A Go Package can fetch polygon definitions from OpenStreet maps and it can also combine one or more polygons into one.
-![alt text](https://github.com/jinagamvasubabu/polyfuse/blob/master/images/polyfuse.png?raw=true)
+![alt text](https://github.com/jinagamvasubabu/polyfuse/blob/master/images/poly_fetcher.png?raw=true)
 ## Overview 
 [![Build Status](https://travis-ci.org/jinagamvasubabu/polyfuse.svg?branch=master)](https://travis-ci.org/jinagamvasubabu/polyfuse)
 [![Build Status](https://circleci.com/gh/jinagamvasubabu/polyfuse.svg?style=svg)](https://circleci.com/gh/jinagamvasubabu/polyfuse)
@@ -20,10 +20,25 @@ More you can find here: [https://hangoutdude.com/polyfuse/](https://hangoutdude.
 ## Install
 
 ```
-go get github.com/jinagamvasubabu/polyfuse
+go get github.com/jinagamvasubabu/poly_fetcher
 ```
 
-## How to use ?
+
+## How to use Fetch Polygons?
+* get `polyfuse`
+```
+  go get github.com/jinagamvasubabu/poly_fetcher
+```
+* import and use it like below:
+```
+  import "github.com/jinagamvasubabu/poly_fetcher"
+  import "github.com/sirupsen/logrus"
+ 
+  p := polyfuse.GeometryUtils{}
+  resp, err := p.FetchPolygons(context.Background(), []string{"germany", "belgium"})
+```
+
+## How to use Combine Polygons?
 * get `polyfuse`
 ```
   go get github.com/jinagamvasubabu/polyfuse

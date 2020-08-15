@@ -1,4 +1,4 @@
-package polyfuse
+package poly_fetcher
 
 const (
 	//CoordinatesMaxLength Maximum length of the coordinates array

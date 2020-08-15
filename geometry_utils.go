@@ -1,4 +1,4 @@
-package polyfuse
+package poly_fetcher
 
 import (
 	"context"
@@ -37,6 +37,7 @@ import (
 
 //IGeometryUtils Program to fetch the polygon data of one or more areas
 type IGeometryUtils interface {
+	FetchPolygons(ctx context.Context, areas []string) ([]schema.GeoJson, error)
 	CombinePolygons(ctx context.Context, areas []string) (schema.GeoJson, error)
 }
 
@@ -44,6 +45,49 @@ type IGeometryUtils interface {
 type GeometryUtils struct {
 	LogLevel log.Level
 }
+
+//Fetch Polygon definitions from OSM
+func (g *GeometryUtils) FetchPolygons(ctx context.Context, areas []string) ([]schema.GeoJson, error) {
+	log.SetLevel(g.LogLevel)
+	defer calculateTimeTaken(time.Now(), "Time Taken by Fetch Polygons")
+	logger := log.WithContext(ctx).WithFields(log.Fields{"Method": "FetchPolygons"})
+	logger.Infof("Fetching polygons for=%s", areas)
+	logger.Debugf("GoRoutines count at beginning: %d", runtime.NumGoroutine())
+	response := []schema.GeoJson{}
+	response = make([]schema.GeoJson, len(areas))
+	for a := range areas {
+		response[a].Coordinates = make([]interface{}, CoordinatesMaxLength) //Initialize with Max number of coordinates array
+		respList, err := getPolygonDataFromOSM(ctx, areas)
+		if err != nil {
+			logger.WithFields(log.Fields{"err": err.Error()}).Error("error while fetching the polygon")
+			return nil, err
+		}
+		for i, result := range respList {
+			geoJSON := result["geojson"].(map[string]interface{})
+			coordinates := geoJSON["coordinates"].([]interface{})
+			response[a].Type = geoJSON["type"].(string)
+			//append based on the type of geojson
+			if len(areas) == 1 {
+				response[a].Coordinates = coordinates
+			} else if i == 0 && response[a].Type == Polygon {
+				response[a].Coordinates[0] = coordinates
+			} else if i > 0 && response[a].Type == Polygon {
+				count := lenOfCoOrdinatesArray(response[a].Coordinates)
+				response[a].Coordinates[count] = coordinates
+			} else if response[a].Type == Multipolygon {
+				count := lenOfCoOrdinatesArray(response[a].Coordinates)
+				for j := range coordinates {
+					response[a].Coordinates[count] = coordinates[j]
+					count++
+				}
+			}
+		}
+		removeNilsFromArray(&response[0])
+	}
+	logger.Debugf("GoRoutines count at last:%d", runtime.NumGoroutine())
+	return response, nil
+}
+
 
 //CombinePolygons function to combine polygons or multipolygons
 func (g *GeometryUtils) CombinePolygons(ctx context.Context, areas []string) (schema.GeoJson, error) {
