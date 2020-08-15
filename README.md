@@ -3,7 +3,6 @@ polyfetcher
 A Go Package can fetch polygon definitions from OpenStreet maps and it can also combine one or more polygons into one.
 ![alt text](https://github.com/jinagamvasubabu/polyfetcher/blob/master/images/poly_fetcher.jpg?raw=true)
 ## Overview 
-[![Build Status](https://travis-ci.org/jinagamvasubabu/polyfetcher.svg?branch=master)](https://travis-ci.org/jinagamvasubabu/polyfetcher)
 [![Build Status](https://circleci.com/gh/jinagamvasubabu/polyfetcher.svg?style=svg)](https://circleci.com/gh/jinagamvasubabu/polyfetcher)
 [![Go Report Card](https://goreportcard.com/badge/github.com/jinagamvasubabu/polyfetcher)](https://goreportcard.com/report/github.com/jinagamvasubabu/polyfetcher)
 [![GoDoc](https://godoc.org/github.com/jinagamvasubabu/polyfetcher?status.svg)](https://godoc.org/github.com/jinagamvasubabu/polyfetcher) 
