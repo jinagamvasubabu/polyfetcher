@@ -1,4 +1,4 @@
-module github.com/jinagamvasubabu/polyFetcher
+module github.com/jinagamvasubabu/polyfetcher
 
 go 1.13
 
