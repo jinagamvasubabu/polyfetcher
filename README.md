@@ -87,10 +87,9 @@ If you get an error like Polygons and MultiPolygons should follow the right-hand
 [https://dev.to/jinagamvasubabu/solution-polygons-and-multipolygons-should-follow-the-right-hand-rule-2c8i](https://dev.to/jinagamvasubabu/solution-polygons-and-multipolygons-should-follow-the-right-hand-rule-2c8i)
 
 
-## Known Errors: 
-Errors:
-   * If one of the area is invalid area then it can fetch the other area if its valid
-   * If both are invalid then it will throw error
+## Errors:
+   * If one of the area is invalid area then it can fetch the other areas if they are valid
+   * If all areas which were passed are invalid then it will throw error `error while fetching the polygon`
 
 ## Goroutines Support:
 Goroutines support to fetch areas concurrently instead of synchronously
