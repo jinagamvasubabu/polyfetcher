@@ -63,26 +63,30 @@ func (g *GeometryUtils) FetchPolygons(ctx context.Context, areas []string) ([]sc
 			return nil, err
 		}
 		for i, result := range respList {
-			geoJSON := result["geojson"].(map[string]interface{})
-			coordinates := geoJSON["coordinates"].([]interface{})
-			response[a].Type = geoJSON["type"].(string)
-			//append based on the type of geojson
-			if len(areas) == 1 {
-				response[a].Coordinates = coordinates
-			} else if i == 0 && response[a].Type == Polygon {
-				response[a].Coordinates[0] = coordinates
-			} else if i > 0 && response[a].Type == Polygon {
-				count := lenOfCoOrdinatesArray(response[a].Coordinates)
-				response[a].Coordinates[count] = coordinates
-			} else if response[a].Type == Multipolygon {
-				count := lenOfCoOrdinatesArray(response[a].Coordinates)
-				for j := range coordinates {
-					response[a].Coordinates[count] = coordinates[j]
-					count++
+			if len(result) > 0 {
+				geoJSON := result["geojson"].(map[string]interface{})
+				coordinates := geoJSON["coordinates"].([]interface{})
+				response[a].Type = geoJSON["type"].(string)
+				//append based on the type of geojson
+				if len(areas) == 1 {
+					response[a].Coordinates = coordinates
+				} else if i == 0 && response[a].Type == Polygon {
+					response[a].Coordinates[0] = coordinates
+				} else if i > 0 && response[a].Type == Polygon {
+					count := lenOfCoOrdinatesArray(response[a].Coordinates)
+					response[a].Coordinates[count] = coordinates
+				} else if response[a].Type == Multipolygon {
+					count := lenOfCoOrdinatesArray(response[a].Coordinates)
+					for j := range coordinates {
+						response[a].Coordinates[count] = coordinates[j]
+						count++
+					}
 				}
 			}
 		}
-		removeNilsFromArray(&response[0])
+		if len(response) > 0 {
+			removeNilsFromArray(&response[0])
+		}
 	}
 	logger.Debugf("GoRoutines count at last:%d", runtime.NumGoroutine())
 	return response, nil
@@ -180,7 +184,15 @@ func fetchOSMDataFromExternalClient(area string, c chan schema.OSMStatus) {
 			c <- schema.OSMStatus{Error: errors.New("no Data available in OSM")}
 			return
 		}
-		c <- schema.OSMStatus{Result: results[0]} //always take the first result of it, because that's more relevant to the search
+		geoJsonData := map[string]interface{}{}
+		for _, r := range results {
+			geoJSON := r["geojson"].(map[string]interface{})
+			polygonType := geoJSON["type"].(string)
+			if polygonType == Polygon || polygonType == Multipolygon {
+				geoJsonData = r
+			}
+		}
+		c <- schema.OSMStatus{Result: geoJsonData}
 	}
 
 }
