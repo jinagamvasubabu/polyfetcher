@@ -22,6 +22,32 @@ func TestGeometryUtils_FetchPolygons_success(t *testing.T) {
 	assert.NotNil(t, response)
 }
 
+func TestGeometryUtils_FetchPolygons_Interested_in_only_Polygons_or_Multi_Polygons(t *testing.T) {
+	//Given
+	gm := GeometryUtils{LogLevel: logrus.DebugLevel}
+	areas := []string{"Rotterdam"}
+
+	//When
+	response, err := gm.FetchPolygons(context.Background(), areas)
+
+	//Then
+	assert.Nil(t, err)
+	assert.Equal(t, response[0].Type, Polygon)
+}
+
+func TestGeometryUtils_FetchPolygons_Interested_in_only_Polygons_or_Multi_Polygons_Return_Empty_When_Point(t *testing.T) {
+	//Given
+	gm := GeometryUtils{LogLevel: logrus.DebugLevel}
+	areas := []string{"Mysore"}
+
+	//When
+	response, err := gm.FetchPolygons(context.Background(), areas)
+
+	//Then
+	assert.Nil(t, err)
+	assert.Equal(t, response[0].Type, "")
+}
+
 func TestGeometryUtils_FetchPolygons_one_area_is_invalid(t *testing.T) {
 	//Given
 	gm := GeometryUtils{LogLevel: logrus.DebugLevel}
