@@ -184,15 +184,15 @@ func fetchOSMDataFromExternalClient(area string, c chan schema.OSMStatus) {
 			c <- schema.OSMStatus{Error: errors.New("no Data available in OSM")}
 			return
 		}
-		geoJsonData := map[string]interface{}{}
+		geoJSONData := map[string]interface{}{}
 		for _, r := range results {
 			geoJSON := r["geojson"].(map[string]interface{})
 			polygonType := geoJSON["type"].(string)
 			if polygonType == Polygon || polygonType == Multipolygon {
-				geoJsonData = r
+				geoJSONData = r
 			}
 		}
-		c <- schema.OSMStatus{Result: geoJsonData}
+		c <- schema.OSMStatus{Result: geoJSONData}
 	}
 
 }
