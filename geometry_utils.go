@@ -188,7 +188,7 @@ func fetchOSMDataFromExternalClient(area string, c chan schema.OSMStatus) {
 		for _, r := range results {
 			geoJSON := r["geojson"].(map[string]interface{})
 			polygonType := geoJSON["type"].(string)
-			if polygonType == Polygon || polygonType == Multipolygon {
+			if (polygonType == Polygon || polygonType == Multipolygon) && geoJsonType == Administrative  {
 				geoJSONData = r
 			}
 		}
