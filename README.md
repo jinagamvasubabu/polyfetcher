@@ -10,8 +10,6 @@ A Go Package can fetch polygon definitions from OpenStreet maps and it can also 
 [![Visits Badge](https://badges.pufler.dev/visits/jinagamvasubabu/polyfetcher)](https://badges.pufler.dev)
 [![Maintainability](https://api.codeclimate.com/v1/badges/bc775ba7e9b6231175a2/maintainability)](https://codeclimate.com/github/jinagamvasubabu/polyfetcher/maintainability)
 
-## Documentation ?
-More you can find here: [https://hangoutdude.com/polyfetcher](https://hangoutdude.com/polyfetcher/)
 
 ## What it does?
 * It can fetch Polygon definitions from `OpenstreetMaps` by taking an area name, throw error if the area is not in OSM database
